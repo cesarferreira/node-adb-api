@@ -1,0 +1,34 @@
+{
+  "name": "adb-api",
+  "version": "0.0.0",
+  "description": "a node API for adb",
+  "author": {
+    "name": "Cesar Ferreira",
+    "email": "cesar.manuel.ferreira@gmail.com",
+    "url": "http://cesarferreira.com"
+  },
+  "scripts": {
+    "start": "node example.js",
+    "lint": "eslint src/**/*",
+    "test": "xo"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "dependencies": {
+    "chalk": "^2.2.0",
+    "node-time-log": "^1.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "xo": "^0.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cesarferreira/adb-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cesarferreira/adb-api/issues"
+  },
+  "homepage": "https://github.com/cesarferreira/adb-api#readme",
+  "license": "MIT"
+}
