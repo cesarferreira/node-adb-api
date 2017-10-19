@@ -4,4 +4,4 @@
 const sample = require('./api.js');
 
 // Use the `sample` as you please
-sample.getDeviceApkPath('ab993982', 'com.asos.app');
+sample.getDeviceApkPath('XXXXXX', 'com.asos.app');
