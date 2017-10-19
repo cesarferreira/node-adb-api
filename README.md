@@ -5,6 +5,13 @@
 [![npm](https://img.shields.io/npm/dt/node-adb-api.svg)](https://www.npmjs.com/package/node-adb-api)
 [![npm](https://img.shields.io/npm/v/node-adb-api.svg)](https://www.npmjs.com/package/node-adb-api)
 
+## Used in
+[purrge](https://github.com/cesarferreira/purrge) - 🐱 Quickly purrge android apps from your phone
+
+<p align="center">
+  <img src="extras/actions.png" width="100%" />
+</p>
+
 ## Install
 
 ```sh
@@ -45,15 +52,6 @@ clearData: (chosenPackage, deviceSerialNumber)
 // check if there is a connected device
 isAnyDeviceConnected: (deviceSerialNumber)
 ```
-
-## Used in
-[purrge](https://github.com/cesarferreira/purrge) - 🐱 Quickly purrge android apps from your phone
-
-<p align="center">
-  <img src="extras/actions.png" width="100%" />
-</p>
-
-
 
 ## Created by
 [Cesar Ferreira](https://cesarferreira.com)
