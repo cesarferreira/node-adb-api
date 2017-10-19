@@ -1,9 +1,6 @@
 # node-adb-api
 > a node API for adb
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/cesarferreira/assets/master/images/screenshot_terminal_hello_world.png" width="100%" />
-</p>
 
 [![Build Status](https://travis-ci.org/cesarferreira/node-adb-api.svg?branch=master)](https://travis-ci.org/cesarferreira/node-adb-api)
 [![npm](https://img.shields.io/npm/dt/node-adb-api.svg)](https://www.npmjs.com/package/node-adb-api)
@@ -18,8 +15,46 @@ yarn add node-adb-api
 ## Usage
 
 ```js
-// todo
+const adb = require('node-adb-api');
 ```
+
+```js
+// Open the package on the device serial number
+launchApp: (chosenPackage, selectedDevice)
+
+// Get the list of connected device serial numbers
+getListOfDevices: ()
+
+// Gets an array of packages by device serial number
+getPackagesByDeviceSerialNumber: (deviceSerialNumber)
+
+// Get the apk path by device serial number
+getDeviceApkPath: (deviceSerialNumber, chosenPackage)
+
+// Download the chosen package by device serial number
+downloadAPK: (deviceSerialNumber, chosenPackage)
+
+// (Promise) Performs a fuzzy match search on the packages
+fuzzySearchPackages: (packages, textToFind)
+
+// Uninstalls the app
+uninstall: (chosenPackage, selectedDevice)
+
+// Clear the app data
+clearData: (chosenPackage, deviceSerialNumber)
+
+// check if there is a connected device
+isAnyDeviceConnected: (deviceSerialNumber)
+```
+
+## Used in
+[purrge](https://github.com/cesarferreira/purrge) - 🐱 Quickly purrge android apps from your phone
+
+<p align="center">
+  <img src="extras/actions.png" width="100%" />
+</p>
+
+
 
 ## Created by
 [Cesar Ferreira](https://cesarferreira.com)
