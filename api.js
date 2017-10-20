@@ -56,7 +56,7 @@ const self = module.exports = {
 		.filter(Boolean)
 		.map(item => item.replace(`package:`, ``))
 		.filter(item => item.trim().endsWith(chosenPackage.trim()))
-		.map(item => item.split(`=`)[0])
+		.map(item => item.replace(`=${chosenPackage}`, ``))
 
 		return packages[0];
 	},
