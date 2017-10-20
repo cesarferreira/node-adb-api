@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 
-const sample = require('./api.js');
+const log = console.log;
+const adb = require('./api.js');
 
-// Use the `sample` as you please
-sample.getDeviceApkPath('XXXXXX', 'com.asos.app');
+// Use the `adb` as you please
+
+adb.downloadAPK('ab993982', 'com.asos.app');

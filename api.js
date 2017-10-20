@@ -33,7 +33,7 @@ const self = module.exports = {
 		mDevices = devices;
 		return devices;
 	},
-	
+
 	getPackagesByDeviceSerialNumber: (deviceSerialNumber) => {
 		const command = shell.exec(`adb -s ${deviceSerialNumber} shell pm list packages`, {
 			silent: true
@@ -42,7 +42,7 @@ const self = module.exports = {
 		.filter(Boolean)
 		.map(item => item.replace(`package:`, ``))
 		.map(item => item.replace(/^\s+|\s+$/g, ``));
-		
+
 		mPackages = packages;
 		return packages;
 	},
@@ -52,10 +52,10 @@ const self = module.exports = {
 			silent: true
 		})
 
-		const packages = command.stdout.split(`\n`)
+    const packages = command.stdout.split(`\n`)
 		.filter(Boolean)
-		.filter(item => item.endsWith(chosenPackage))
 		.map(item => item.replace(`package:`, ``))
+		.filter(item => item.trim().endsWith(chosenPackage.trim()))
 		.map(item => item.split(`=`)[0])
 
 		return packages[0];
@@ -69,21 +69,21 @@ const self = module.exports = {
 			silent: true
 		});
 		return fileName;
-	},		
-	
+	},
+
 	fuzzySearchPackages: (packages, textToFind) => {
 		textToFind = textToFind || '';
-		
+
 		return new Promise(function(resolve) {
 			var fuzzyResult = fuzzy.filter(textToFind, mPackages);
 			resolve(fuzzyResult.map(el => el.original));
 		});
 	},
-	
+
 	uninstall: (chosenPackage, selectedDevice) => {
 		shell.exec(`adb -s ${selectedDevice} uninstall ${chosenPackage}`);
 	},
-	
+
 	clearData: (chosenPackage, deviceSerialNumber) => {
 		shell.exec(`adb -s ${deviceSerialNumber} shell pm clear ${chosenPackage}`);
 	},
@@ -91,5 +91,5 @@ const self = module.exports = {
 	isAnyDeviceConnected: (deviceSerialNumber) => {
 		return self.getPackagesByDeviceSerialNumber(deviceSerialNumber).length > 0;
 	}
-	
+
 };
