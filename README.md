@@ -15,7 +15,7 @@
 ## Install
 
 ```sh
-yarn add node-adb-api
+npm install node-adb-api
 ```
 
 ## Usage
