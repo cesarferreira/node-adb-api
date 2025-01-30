@@ -1,17 +1,10 @@
 #!/usr/bin/env node
 "use strict";
 
-const Chalk = require("chalk");
-const log = require("node-time-log").SimpleLog;
 const shell = require("shelljs");
 const fuzzy = require("fuzzy");
 
 let mPackages;
-let mDevices;
-
-function isEmpty(obj) {
-  return Object.keys(obj).length === 0;
-}
 
 // Main code //
 const self = (module.exports = {
@@ -24,7 +17,7 @@ const self = (module.exports = {
   getListOfDevices: () => {
     const command = shell.exec("adb devices -l", { silent: true });
     const devices = command.stdout
-      .split(`\n`)
+      .split("\n")
       .filter(Boolean)
       .filter((item) => item.indexOf("daemon not running") === -1)
       .filter((item) => item.indexOf("daemon started") === -1)
@@ -32,7 +25,6 @@ const self = (module.exports = {
       .map((item) => item.split(/\s+/)[0])
       .filter(Boolean);
 
-    mDevices = devices;
     return devices;
   },
 
@@ -44,10 +36,10 @@ const self = (module.exports = {
       }
     );
     const packages = command.stdout
-      .split(`\n`)
+      .split("\n")
       .filter(Boolean)
-      .map((item) => item.replace(`package:`, ``))
-      .map((item) => item.replace(/^\s+|\s+$/g, ``));
+      .map((item) => item.replace("package:", ""))
+      .map((item) => item.replace(/^\s+|\s+$/g, ""));
 
     mPackages = packages;
     return packages;
@@ -62,11 +54,11 @@ const self = (module.exports = {
     );
 
     const packages = command.stdout
-      .split(`\n`)
+      .split("\n")
       .filter(Boolean)
-      .map((item) => item.replace(`package:`, ``))
+      .map((item) => item.replace("package:", ""))
       .filter((item) => item.trim().endsWith(chosenPackage.trim()))
-      .map((item) => item.replace(`=${chosenPackage}`, ``));
+      .map((item) => item.replace(`=${chosenPackage}`, ""));
 
     return packages[0];
   },
@@ -84,8 +76,8 @@ const self = (module.exports = {
   fuzzySearchPackages: (packages, textToFind) => {
     textToFind = textToFind || "";
 
-    return new Promise(function (resolve) {
-      var fuzzyResult = fuzzy.filter(textToFind, mPackages);
+    return new Promise((resolve) => {
+      const fuzzyResult = fuzzy.filter(textToFind, mPackages);
       resolve(fuzzyResult.map((el) => el.original));
     });
   },

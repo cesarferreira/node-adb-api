@@ -1,10 +1,17 @@
 {
-  "extends": "airbnb-base",
-  "plugins": [
-    "import"
-  ],
+  "env": {
+    "node": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": "standard",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
   "rules": {
-    "no-trailing-spaces": "error",
-    "eol-last":"error"
+    "semi": ["error", "always"],
+    "space-before-function-paren": ["error", "never"],
+    "quotes": ["error", "double"],
+    "comma-dangle": ["error", "never"]
   }
 }

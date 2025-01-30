@@ -3,7 +3,7 @@ const adb = require("./api");
 
 // Mock shelljs exec
 jest.mock("shelljs", () => ({
-  exec: jest.fn(),
+  exec: jest.fn()
 }));
 
 describe("ADB API", () => {
@@ -32,7 +32,7 @@ describe("ADB API", () => {
 ${mockDeviceId} device
 emulator-5554 device
 daemon not running
-daemon started successfully`,
+daemon started successfully`
       });
     });
 
@@ -55,7 +55,7 @@ daemon started successfully`,
       shell.exec.mockReturnValue({
         stdout: `package:com.example.app
 package:com.android.chrome
-package:com.google.android.gms`,
+package:com.google.android.gms`
       });
     });
 
@@ -72,7 +72,7 @@ package:com.google.android.gms`,
     beforeEach(() => {
       shell.exec.mockReturnValue({
         stdout: `package:/data/app/com.example.app-1/base.apk=com.example.app
-package:/data/app/com.android.chrome-2/base.apk=com.android.chrome`,
+package:/data/app/com.android.chrome-2/base.apk=com.android.chrome`
       });
     });
 
@@ -90,7 +90,7 @@ package:/data/app/com.android.chrome-2/base.apk=com.android.chrome`,
   describe("downloadAPK", () => {
     beforeEach(() => {
       shell.exec.mockReturnValueOnce({
-        stdout: `package:/data/app/com.example.app-1/base.apk=com.example.app`,
+        stdout: "package:/data/app/com.example.app-1/base.apk=com.example.app"
       });
     });
 
@@ -110,18 +110,18 @@ package:/data/app/com.android.chrome-2/base.apk=com.android.chrome`,
       shell.exec.mockReturnValue({
         stdout: `package:com.example.app
 package:com.android.chrome
-package:com.google.android.gms`,
+package:com.google.android.gms`
       });
       // Initialize mPackages
       adb.getPackagesByDeviceSerialNumber(mockDeviceId);
     });
 
-    it("should return matching packages", async () => {
+    it("should return matching packages", async() => {
       const results = await adb.fuzzySearchPackages(null, "chrome");
       expect(results).toContain("com.android.chrome");
     });
 
-    it("should handle empty search string", async () => {
+    it("should handle empty search string", async() => {
       const results = await adb.fuzzySearchPackages(null, "");
       expect(Array.isArray(results)).toBe(true);
     });
