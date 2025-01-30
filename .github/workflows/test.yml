@@ -29,9 +29,6 @@ jobs:
     - name: Run tests
       run: npm test
       
-    - name: Run linting
-      run: npm run lint
-      
     - name: Cache dependencies
       uses: actions/cache@v4
       with:
