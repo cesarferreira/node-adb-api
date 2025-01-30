@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node example.js",
     "lint": "eslint src/**/*",
-    "test": "node test.js"
+    "test": "jest"
   },
   "main": "api.js",
   "keywords": [],
@@ -20,7 +20,9 @@
     "node-time-log": "^1.0.3",
     "shelljs": "^0.8.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/cesarferreira/node-adb-api.git"
